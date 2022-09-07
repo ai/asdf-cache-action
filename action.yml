@@ -20,13 +20,17 @@ runs:
       uses: asdf-vm/actions/install@v1
     - name: Check pnpm
       id: pnpm
-      run: check-pnpm.sh
       shell: bash
+      run: |
+        if grep --quiet "^pnpm " .tool-versions; then
+          echo "::set-output name=detected::true"
+        fi
     - name: Get pnpm store directory
       if: steps.pnpm.outputs.detected == 'true'
       id: pnpm-cache
       shell: bash
-      run: echo "::set-output name=path::$(pnpm store path)"
+      run: |
+        echo "::set-output name=path::$(pnpm store path)"
     - name: Cache pnpm modules
       if: steps.pnpm.outputs.detected == 'true'
       uses: actions/cache@v3
