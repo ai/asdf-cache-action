@@ -20,8 +20,8 @@ runs:
       uses: asdf-vm/actions/install@v1
     - name: Check pnpm
       id: pnpm
+      run: check-pnpm.sh
       shell: bash
-      run: ./check-pnpm.sh
     - name: Get pnpm store directory
       if: steps.pnpm.outputs.detected == 'true'
       id: pnpm-cache
