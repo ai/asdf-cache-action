@@ -1,5 +1,9 @@
 name: Install tools from asdf config
 description: Install runtimes by asdf CLI with a cache
+inputs:
+  dependencies-cache:
+    description: Postfix for pnpm cache name
+    default: "default"
 runs:
   using: "composite"
   steps:
@@ -28,4 +32,4 @@ runs:
       uses: actions/cache@v3
       with:
         path: ${{ steps.pnpm-cache.outputs.path }}
-        key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+        key: pnpm-${{ inputs.dependencies-cache }}-${{ hashFiles('pnpm-lock.yaml') }}
