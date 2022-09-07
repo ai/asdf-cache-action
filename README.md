@@ -10,7 +10,7 @@ and optionally for `pnpm`.
 
 ```yml
       - name: Install tools from asdf config
-        uses: ai/asdf-cache-action@main
+        uses: ai/asdf-cache-action@v1
 ```
 
 <a href="https://evilmartians.com/?utm_source=nanoid">
@@ -39,7 +39,7 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v3
       - name: Install tools from asdf config
-        uses: ai/asdf-cache-action@main
+        uses: ai/asdf-cache-action@v1
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Run tests
@@ -54,7 +54,7 @@ If you are have jobs with `pnpm install` and `pnpm install --prod` you can use
 
 ```yml
       - name: Install tools from asdf config
-        uses: ai/asdf-cache-action@main
+        uses: ai/asdf-cache-action@v1
         with:
           dependencies-cache: production
       - name: Install dependencies
