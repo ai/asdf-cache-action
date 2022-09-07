@@ -18,11 +18,14 @@ runs:
       id: pnpm
       shell: bash
       run: ./check-pnpm.sh
+    - name: Get pnpm store directory
+      if: steps.pnpm.outputs.detected == 'true'
+      id: pnpm-cache
+      run: |
+        echo "::set-output name=path::$(pnpm store path)"
     - name: Cache pnpm modules
       if: steps.pnpm.outputs.detected == 'true'
       uses: actions/cache@v3
-      env:
-        cache-name: cache-pnpm-modules
       with:
-        path: ~/.local/share/pnpm/store/
+        path: ${{ steps.pnpm-cache.outputs.path }}
         key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
