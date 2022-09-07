@@ -1,0 +1,27 @@
+name: Install tools from asdf config
+description: Install runtimes by asdf CLI with a cache
+runs:
+  using: "composite"
+  steps:
+    - name: Install asdf
+      uses: asdf-vm/actions/setup@v1
+    - name: Cache asdf
+      id: cache
+      uses: actions/cache@v3
+      with:
+        path: ~/.asdf
+        key: asdf-${{ hashFiles('**/.tool-versions') }}
+    - name: Install asdf tools
+      if: steps.cache.outputs.cache-hit != 'true'
+      uses: asdf-vm/actions/install@v1
+    - name: Check pnpm
+      id: pnpm
+      run: ./check-pnpm.sh
+    - name: Cache pnpm modules
+      if: steps.pnpm.outputs.detected == 'true'
+      uses: actions/cache@v3
+      env:
+        cache-name: cache-pnpm-modules
+      with:
+        path: ~/.local/share/pnpm/store/
+        key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
