@@ -25,8 +25,8 @@ runs:
     - name: Get pnpm store directory
       if: steps.pnpm.outputs.detected == 'true'
       id: pnpm-cache
-      run: |
-        echo "::set-output name=path::$(pnpm store path)"
+      shell: bash
+      run: echo "::set-output name=path::$(pnpm store path)"
     - name: Cache pnpm modules
       if: steps.pnpm.outputs.detected == 'true'
       uses: actions/cache@v3
