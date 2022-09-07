@@ -16,6 +16,7 @@ runs:
       uses: asdf-vm/actions/install@v1
     - name: Check pnpm
       id: pnpm
+      shell: bash
       run: ./check-pnpm.sh
     - name: Cache pnpm modules
       if: steps.pnpm.outputs.detected == 'true'
