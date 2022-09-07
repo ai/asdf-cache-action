@@ -41,7 +41,7 @@ jobs:
       - name: Install tools from asdf config
         uses: ai/asdf-cache-action@v1
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile --ignore-scripts
+        run: pnpm install --ignore-scripts
       - name: Run tests
         run: pnpm test
 ```
