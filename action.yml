@@ -1,5 +1,9 @@
 name: Install tools from asdf config
 description: Install runtimes by asdf CLI with a cache
+author: Andrey Sitnik
+branding:
+  icon: download
+  color: purple
 inputs:
   dependencies-cache:
     description: Postfix for pnpm cache name
