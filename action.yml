@@ -27,14 +27,14 @@ runs:
       shell: bash
       run: |
         if grep --quiet "^pnpm " .tool-versions; then
-          echo "::set-output name=detected::true"
+          echo "detected=true" >> $GITHUB_OUTPUT
         fi
     - name: Get pnpm store directory
       if: steps.pnpm.outputs.detected == 'true'
       id: pnpm-cache
       shell: bash
       run: |
-        echo "::set-output name=path::$(pnpm store path)"
+        echo "path=$(pnpm store path)" >> $GITHUB_OUTPUT
     - name: Cache pnpm modules
       if: steps.pnpm.outputs.detected == 'true'
       uses: actions/cache@v3
