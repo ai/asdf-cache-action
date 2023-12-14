@@ -12,7 +12,7 @@ runs:
   using: "composite"
   steps:
     - name: Install asdf
-      uses: asdf-vm/actions/setup@v2
+      uses: asdf-vm/actions/setup@v3
     - name: Cache asdf
       id: cache
       uses: actions/cache@v3
@@ -21,7 +21,7 @@ runs:
         key: asdf-${{ hashFiles('**/.tool-versions') }}
     - name: Install asdf tools
       if: steps.cache.outputs.cache-hit != 'true'
-      uses: asdf-vm/actions/install@v2
+      uses: asdf-vm/actions/install@v3
     - name: Check pnpm
       id: pnpm
       shell: bash
