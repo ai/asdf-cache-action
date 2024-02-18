@@ -13,10 +13,11 @@ and optionally for `pnpm`.
         uses: ai/asdf-cache-action@v1
 ```
 
-<a href="https://evilmartians.com/?utm_source=nanoid">
-  <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
-       alt="Sponsored by Evil Martians" width="236" height="54">
-</a>
+---
+
+<img src="https://cdn.evilmartians.com/badges/logo-no-label.svg" alt="" width="22" height="16" />  Made in <b><a href="https://evilmartians.com/devtools?utm_source=asdf-cache-action&utm_campaign=devtools-button&utm_medium=github">Evil Martians</a></b>, product consulting for <b>developer tools</b>.
+
+---
 
 
 ## Full Example
