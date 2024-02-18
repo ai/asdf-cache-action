@@ -15,7 +15,7 @@ runs:
       uses: asdf-vm/actions/setup@v3
     - name: Cache asdf
       id: cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/.asdf
         key: asdf-${{ hashFiles('**/.tool-versions') }}
@@ -37,7 +37,7 @@ runs:
         echo "path=$(pnpm store path)" >> $GITHUB_OUTPUT
     - name: Cache pnpm modules
       if: steps.pnpm.outputs.detected == 'true'
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ${{ steps.pnpm-cache.outputs.path }}
         key: pnpm-${{ inputs.dependencies-cache }}-${{ hashFiles('pnpm-lock.yaml') }}
